@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-charcoal: #101E3C;
+  --bg-obsidian: #0A1128;
+  --bg-navy-card: #0E1B3A;
+  --bg-warm-white: #F8FAFC;
+  --bg-pure-white: #FFFFFF;
+  --accent-orange: #E52E2E;
+  --accent-red: #E52E2E;
+  --accent-blue: #2563EB;
+  --text-grey: #94A3B8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0A1128;
+    color: #F8FAFC;
+    font-family: var(--font-space-grotesk), var(--font-body), sans-serif;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: #0A1128;
+    color: #F8FAFC;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-space-grotesk), var(--font-body), sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk), var(--font-heading), sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  ::selection {
+    background-color: #E52E2E;
+    color: #FFFFFF;
+  }
+}
+
+/* Editorial technical tread texture overlay */
+.tread-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.tread-grid-light {
+  background-image:
+    linear-gradient(to right, rgba(16, 17, 18, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 17, 18, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Marquee animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 34s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Hide scrollbars cleanly where horizontal swipe tracks are used */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide Next.js dev indicator badge */
+nextjs-portal,
+#nextjs-dev-tools-indicator,
+[data-nextjs-dev-tools-indicator],
+[data-nextjs-toast] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
